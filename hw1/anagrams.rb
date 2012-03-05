@@ -1,12 +1,24 @@
 def combine_anagrams(words)
 
+    ret = Hash.new
+    out = Array.new
+
     words.each do |i|
-        p i.downcase
+        if ret[i.downcase.chars.sort.join.to_s] == nil
+            ret[i.downcase.chars.sort.join.to_s] = Array.new
+        end
+
+        ret[i.downcase.chars.sort.join.to_s].push(i)
+
     end
 
+    ret.each do |i|
+        out.push(i[1])
+    end
 
+    return out
 
 end
 
 
-combine_anagrams( ['cARs', 'for', 'potatoes', 'racs', 'four','scar', 'creams', 'scream'] )
+#p combine_anagrams( ['cARs', 'for', 'potatoes', 'racs', 'four','scar', 'creams', 'scream'] )
