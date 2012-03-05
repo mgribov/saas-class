@@ -11,6 +11,10 @@ def rps_game_winner(game)
         raise NoSuchStrategyError unless valid_strategy.include? i[1].downcase
     end
 
+    if game[0][1].downcase == game[1][1].downcase
+        return game[0]
+    end
+
     if game[0][1].downcase == 'p' and game[1][1].downcase == 'r'
         return game[0]
     end
@@ -50,6 +54,10 @@ def rps_tournament_winner(games)
         end
     end
 
+    if winner.length == 1
+        return winner[0]
+    end
+
     return rps_game_winner( [ winner[0], winner[1] ])
 
 end
@@ -59,12 +67,22 @@ end
 # tour = [ 
 #         [ 
 #             [ ["Armando", "P"], ["Dave", "S"] ],
-#             [ ["Richard", "R"], ["Michael", "S"] ],
-#             #[ ["bob", "s"], ["joe", "r"] ],
+#             [ ["Richard", "p"], ["Michael", "S"] ],
+#             [ ["bob", "s"], ["joe", "r"] ],
+#             [ ["bob", "s"], ["joe", "p"] ]
 #         ],
 #         [
 #             [ ["Allen", "S"], ["Omer", "P"] ],
-#             [ ["David E.", "R"], ["Richard X.", "P"] ]
+#             [ ["David E.", "R"], ["Richard X.", "P"] ],
+#             [ ["bob", "p"], ["joe", "r"] ],
+#             [ ["bob", "s"], ["joe", "r"] ]
+#         ]
+#     ]
+# 
+
+# tour = [ 
+#         [ 
+#             [ ["Armando", "P"], ["Dave", "S"] ],
 #         ]
 #     ]
 # 
