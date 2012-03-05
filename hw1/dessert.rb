@@ -4,19 +4,19 @@ class Dessert
         @name, @calories = name, calories.to_i
     end
 
-    def setName=(value) 
+    def name=(value) 
         @name = value
     end
 
-    def getName
+    def name
         @name
     end
 
-    def setCalories=(value)
+    def calories=(value)
         @calories = value
     end
 
-    def getCalories
+    def calories
         @calories
     end
 
@@ -38,11 +38,11 @@ class JellyBean < Dessert
         @name, @calories, @flavor = name, calories.to_i, flavor
     end
 
-    def setFlavor=(value) 
+    def flavor=(value) 
         @flavor = value
     end
 
-    def getFlavor
+    def flavor
         @flavor
     end
 
@@ -56,11 +56,16 @@ class JellyBean < Dessert
 end
 
 
-# d = Dessert.new('awesome', 100)
-# p d.healthy?
+#d = Dessert.new('cake', 100)
+#p d.healthy?
+#d.name = 'wee'
+#p d.name
+
 # 
 # ew = JellyBean.new('ew', 100, 'black licorice')
 # p ew.delicious?
 # 
-# yay = JellyBean.new('yay', 100, 'vanilla')
-# p yay.delicious?
+#yay = JellyBean.new('yay', 100, 'strawberry')
+#p yay.delicious?
+#yay.flavor = 'sucks'
+#p yay.flavor
