@@ -45,7 +45,15 @@ module Palindrome
         elsif self.respond_to?('each')
             t = Array.new
             self.each do |c|
-                t.push(c)
+                #t.push(c)
+                if c.respond_to?('downcase') and c.respond_to?('gsub')
+                    clean = c.downcase.gsub(/[^[:alnum:]]/, '')
+                    if clean.to_s.length > 0
+                       t.push(clean)
+                    end
+                else
+                    t.push(c)
+                end
             end
             return t.palindrome?
         end
@@ -66,6 +74,9 @@ class Enumerator
     include Palindrome
 end
 
+# p "ifihadahifi".chars.palindrome?
+# p "If I had a hi-fi".chars.palindrome?
+# 
 # def test_palindrome_on_enumerables()
 #   raise "radar EXPECTED_PALINDROME" unless "radar".palindrome?
 #   raise "bogus NOT_EXPECTED_PALINDROME" unless !"bogus".palindrome?
@@ -81,7 +92,7 @@ end
 # end
 # test_palindrome_on_enumerables()
 # 
-
+# 
 #test = [[1,2],[1,2]]
 #test.each do |x|
 #    p x.palindrome?
