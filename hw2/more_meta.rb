@@ -35,7 +35,6 @@ class String
 end
 
 module Palindrome
-    include Enumerable
     def palindrome?
         if self.respond_to?('reverse')
             if self.reverse == self
@@ -43,6 +42,12 @@ module Palindrome
             else
                 return false
             end
+        elsif self.respond_to?('each')
+            t = Array.new
+            self.each do |c|
+                t.push(c)
+            end
+            return t.palindrome?
         end
         return false
     end
@@ -57,9 +62,30 @@ end
 class Range
     include Palindrome
 end
-class Iterator
+class Enumerator
     include Palindrome
 end
+
+# def test_palindrome_on_enumerables()
+#   raise "radar EXPECTED_PALINDROME" unless "radar".palindrome?
+#   raise "bogus NOT_EXPECTED_PALINDROME" unless !"bogus".palindrome?
+#   raise "EXPECTED_PALINDROME" unless [1,2,3,2,1].palindrome?
+#   raise "NOT_EXPECTED_PALINDROME" unless ![99,1,2,3,2,1].palindrome?
+#   raise "NOT_EXPECTED_PALINDROME" unless !{:a=>1,:b=>2,:c=>1}.palindrome?
+#   raise "EXPECTED_CHARS_PALINDROME" unless "radar".chars.palindrome?
+#   raise "NOT_EXPECTED_CHARS_PALINDROME" unless !"NOTradar".chars.palindrome?
+#   raise "EXPECTED_STRING_PALINDROME" unless "radar".palindrome?
+#   raise "NOT_EXPECTED_STRING_PALINDROME" unless !"BOGUS_radar".palindrome?
+#   raise "EXPECTED_STRING_PALINDROME" unless "a man a plan a- canal panama".palindrome?
+#   raise "NOT_EXPECTED_RANGE_PALINDROME" unless !(1..3).palindrome?
+# end
+# test_palindrome_on_enumerables()
+# 
+
+#test = [[1,2],[1,2]]
+#test.each do |x|
+#    p x.palindrome?
+#end
 
 #p 1.euro.in(:dollar)
 #p 1.yen.in(:dollar)
@@ -76,4 +102,4 @@ end
 
 #a= {"hello" => "world"}.palindrome?
 #p a
-#p (1..1).palindrome?
+#p (1..5).palindrome?
