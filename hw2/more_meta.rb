@@ -35,6 +35,7 @@ class String
 end
 
 module Palindrome
+    include Enumerable
     def palindrome?
         if self.respond_to?('reverse')
             if self.reverse == self
@@ -43,6 +44,7 @@ module Palindrome
                 return false
             end
         end
+        return false
     end
 end
 
@@ -53,6 +55,9 @@ class Hash
     include Palindrome
 end
 class Range
+    include Palindrome
+end
+class Iterator
     include Palindrome
 end
 
@@ -69,6 +74,6 @@ end
 
 #p [1,2,3,2,1].palindrome?
 
-#a = {"hello" => "world"}.palindrome?
-
-#p (1..2).palindrome?
+#a= {"hello" => "world"}.palindrome?
+#p a
+#p (1..1).palindrome?
