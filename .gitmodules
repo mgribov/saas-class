@@ -1,3 +1,6 @@
 [submodule "hw2/hw2_rottenpotatoes"]
 	path = hw2/hw2_rottenpotatoes
 	url = git://github.com/saasbook/hw2_rottenpotatoes.git
+[submodule "hw3/hw3_rottenpotatoes"]
+	path = hw3/hw3_rottenpotatoes
+	url = git://github.com/saasbook/hw3_rottenpotatoes.git
